@@ -16,17 +16,18 @@ var search = function(nums, target) {
             result = mid
             break
         }else{
-            if(nums[mid] < nums[end]){
-                if(nums[mid] < target && target <= nums[end]){
-                    start = mid + 1
+            // 순행구간 체크
+            if(nums[mid] < nums[end]){  // 우측순행
+                if(nums[mid] < target && target <= nums[end]){  // 순행구간 사이에 타겟 존재 여부
+                    start = mid + 1     // 있으면 우측탐색
                 }else{
-                    end = mid -1
+                    end = mid -1        // 없으면 좌측탐색
                 }
-            }else{
-                if(nums[start] <= target && target < nums[mid]){
-                    end = mid -1
+            }else{  // 좌측순행
+                if(nums[start] <= target && target < nums[mid]){  // 순행구간 사이에 타겟 존재 여부
+                    end = mid -1        // 있으면 좌측탐색
                 }else{
-                    start = mid + 1
+                    start = mid + 1     // 없으면 우측탐색
                 }
             }
         }
@@ -34,3 +35,6 @@ var search = function(nums, target) {
 
     return result
 };
+
+
+
