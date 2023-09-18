@@ -3,15 +3,13 @@
  * @return {number}
  */
 var climbStairs = function(n) {
-    if(n <= 1) return 1
+    if(n <= 1) return n    
     
-    let step1 = 1
-    let step2 = 2
-
-    for(let i = 3; i <= n; i++) {
-        let sumStep = step1 + step2
-        step1 = step2
-        step2 = sumStep
+    let result = [1, 1]
+    
+    for(let i = 2; i <= n; i++) {
+        result.push(result[i-2] + result[i-1])
     }
-    return step2
+    
+    return result[n]
 };
